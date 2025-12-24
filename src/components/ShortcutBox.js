@@ -13,11 +13,15 @@ export const ShortcutBox = ({ id, label, togglesMapRef }) => {
     }, []);
 
     useEffect(() => {
-        togglesMapRef.current.set(id, toggle);
+        const map = togglesMapRef.current;
+
+        map.set(id, toggle);
+
         return () => {
-            togglesMapRef.current.delete(id);
+            map.delete(id);
         };
     }, [id, toggle, togglesMapRef]);
+
 
     return (
         <div
